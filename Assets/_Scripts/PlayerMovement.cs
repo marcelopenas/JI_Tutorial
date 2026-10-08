@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (GameController.gameOver())
+        if (GameController.IsGameOver())
         {
             rb.linearVelocity = Vector2.zero;
             return;

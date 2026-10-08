@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject endGamePanel;
+    [SerializeField] private GameObject endGamePanel;
 
-    void FixedUpdate()
+    private void OnEnable()
     {
-        if (GameController.gameOver())
-        {
-            Debug.Log("Game Over!");
-            endGamePanel.SetActive(true);
-        }
-        else {
-            endGamePanel.SetActive(false);
-        }
+        GameController.GameOver += ShowEndGamePanel;
+        SetEndGamePanel(GameController.IsGameOver());
+    }
+
+    private void OnDisable()
+    {
+        GameController.GameOver -= ShowEndGamePanel;
+    }
+
+    private void ShowEndGamePanel()
+    {
+        SetEndGamePanel(true);
+        Debug.Log("Game Over!");
+    }
+
+    private void SetEndGamePanel(bool visible)
+    {
+        endGamePanel.SetActive(visible);
     }
 }

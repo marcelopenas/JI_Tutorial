@@ -3,20 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class MenuActions : MonoBehaviour
 {
+    private const string GameScene = "Game";
+    private const string MainMenuScene = "MainMenu";
+
     public void StartGame()
     {
         GameController.Init();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(GameScene);
     }
 
-    public void Menu() 
+    public void Menu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(MainMenuScene);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameController.Init();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

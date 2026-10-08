@@ -3,26 +3,31 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    public GameObject timerText;
-    public GameObject coinCountText;
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text coinCountText;
 
-    private TMP_Text timerTmpText;
-    private TMP_Text coinTmpText;
-
-    private void Awake()
+    private void OnEnable()
     {
-        timerTmpText = timerText.GetComponent<TMP_Text>();
-        coinTmpText = coinCountText.GetComponent<TMP_Text>();
+        GameController.TimerChanged += UpdateTimerText;
+        GameController.CoinCountChanged += UpdateCoinText;
+
+        UpdateTimerText(GameController.GetTimer());
+        UpdateCoinText(GameController.GetCoinCount());
     }
 
-    private void FixedUpdate()
+    private void OnDisable()
     {
-        GameController.UpdateTimer(Time.fixedDeltaTime);
+        GameController.TimerChanged -= UpdateTimerText;
+        GameController.CoinCountChanged -= UpdateCoinText;
+    }
 
-        int coinCount = GameController.GetCoinCount();
-        int remainingTime = GameController.GetTimer();
+    private void UpdateTimerText(int value)
+    {
+        timerText.text = "Time: " + value.ToString("D3");
+    }
 
-        timerTmpText.text = "Time: " + remainingTime.ToString("D3");
-        coinTmpText.text = "Coins: " + coinCount.ToString("D3");
+    private void UpdateCoinText(int value)
+    {
+        coinCountText.text = "Coins: " + value.ToString("D3");
     }
 }
