@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private float detectionRange = 2.5f; // Range within which the enemy detects the player
+    private SpriteRenderer spriteRenderer;
     private GameObject player;
     private float attackCooldownRemaining;
 
@@ -15,6 +16,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -51,8 +54,19 @@ public class EnemyMovement : MonoBehaviour
             Vector2 movement = direction;
             movement.Normalize();
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        
+            // Flip the sprite based on movement direction (default is facing right)
+            // Also keep last facing direction when not moving
+            if (movement.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (movement.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
         }
-    
+
 
     }
 

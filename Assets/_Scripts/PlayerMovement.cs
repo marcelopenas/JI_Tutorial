@@ -105,6 +105,17 @@ public class PlayerMovement : MonoBehaviour
         movement.Normalize();
 
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+
+        // Flip the sprite based on movement direction (default is facing right)
+        // Also keep last facing direction when not moving
+        if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
