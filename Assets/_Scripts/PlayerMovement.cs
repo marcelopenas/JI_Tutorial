@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 movement = Vector2.zero;
 
+        // Keyboard input
         if (Keyboard.current != null)
         {
             movement = new Vector2(
@@ -83,9 +84,22 @@ public class PlayerMovement : MonoBehaviour
                 (Keyboard.current.downArrowKey.isPressed ? 1f : 0f));
         }
 
+        // Gamepad input
         if (Gamepad.current != null && Gamepad.current.leftStick.ReadValue().sqrMagnitude > movement.sqrMagnitude)
         {
             movement = Gamepad.current.leftStick.ReadValue();
+        }
+        if (Gamepad.current != null && Gamepad.current.rightStick.ReadValue().sqrMagnitude > movement.sqrMagnitude)
+        {
+            movement = Gamepad.current.rightStick.ReadValue();
+        }
+        if (Gamepad.current != null && Gamepad.current.dpad.ReadValue().sqrMagnitude > movement.sqrMagnitude)
+        {
+            movement = Gamepad.current.dpad.ReadValue();
+        }
+        if (Gamepad.current != null && Gamepad.current.rightStick.ReadValue().sqrMagnitude > movement.sqrMagnitude)
+        {
+            movement = Gamepad.current.rightStick.ReadValue();
         }
 
         movement.Normalize();
