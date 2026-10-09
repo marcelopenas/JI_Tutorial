@@ -5,25 +5,15 @@ public class EnemyMovement : MonoBehaviour
 {
     public float speed = 2.5f;
     public float attackCooldown = 3f;
-    [Range(0f, 1f)]
-    public float attackDarkenAmount = 0.35f;
 
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
     private float detectionRange = 2.5f; // Range within which the enemy detects the player
     private GameObject player;
-    private Color normalColor;
     private float attackCooldownRemaining;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            normalColor = spriteRenderer.color;
-        }
-
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -34,14 +24,6 @@ public class EnemyMovement : MonoBehaviour
             attackCooldownRemaining = Mathf.Max(0f, attackCooldownRemaining - Time.deltaTime);
         }
 
-        if (spriteRenderer != null)
-        {
-            float cooldownProgress = attackCooldown <= 0f
-                ? 1f
-                : 1f - attackCooldownRemaining / attackCooldown;
-            Color darkColor = normalColor * (1f - attackDarkenAmount);
-            spriteRenderer.color = Color.Lerp(darkColor, normalColor, cooldownProgress);
-        }
     }
 
     void FixedUpdate()
@@ -78,6 +60,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.CompareTag("Player") &&
             !GameController.IsGameOver() &&
+            !GameController.IsPlayerInvulnerable &&
             attackCooldownRemaining <= 0f)
         {
             Debug.Log("Enemy attacked Player!");

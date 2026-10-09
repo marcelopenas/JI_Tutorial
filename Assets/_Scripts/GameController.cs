@@ -7,15 +7,19 @@ public static class GameController
     private static int timer; // In seconds
     private static int playerLives; // Number of lives the player has
     private static float timerAccumulator;
+    private static float playerInvulnerabilityRemaining;
     private static bool initialized;
     private static bool gameOverRaised;
 
     public static event Action<int> TimerChanged;
     public static event Action<int> CoinCountChanged;
     public static event Action<int> PlayerLivesChanged;
+    public static event Action<float> PlayerDamaged;
     public static event Action GameOver;
 
+    public const float PlayerInvulnerabilityDuration = 3f;
     public static bool IsInitialized => initialized;
+    public static bool IsPlayerInvulnerable => playerInvulnerabilityRemaining > 0f;
 
     public static void Init()
     {
@@ -23,6 +27,7 @@ public static class GameController
         playerLives = 3;
         timer = 100;
         timerAccumulator = 0f;
+        playerInvulnerabilityRemaining = 0f;
         initialized = true;
         gameOverRaised = false;
 
@@ -69,7 +74,14 @@ public static class GameController
 
     public static void UpdateTimer(float deltaTime)
     {
-        if (!initialized || IsGameOver())
+        if (!initialized)
+        {
+            return;
+        }
+
+        playerInvulnerabilityRemaining = Mathf.Max(0f, playerInvulnerabilityRemaining - deltaTime);
+
+        if (IsGameOver())
         {
             return;
         }
@@ -90,12 +102,14 @@ public static class GameController
 
     public static void DamagePlayer()
     {
-        if (!initialized || IsGameOver())
+        if (!initialized || IsGameOver() || IsPlayerInvulnerable)
         {
             return;
         }
 
         playerLives = Mathf.Max(0, playerLives - 1);
+        playerInvulnerabilityRemaining = PlayerInvulnerabilityDuration;
+        PlayerDamaged?.Invoke(PlayerInvulnerabilityDuration);
         PlayerLivesChanged?.Invoke(playerLives);
         Debug.Log("Player damaged! Remaining lives: " + playerLives);
         RaiseGameOverIfNeeded();

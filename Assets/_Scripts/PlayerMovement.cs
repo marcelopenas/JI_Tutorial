@@ -4,13 +4,52 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5.0f;
+    [Range(0f, 1f)]
+    public float damagedAlpha = 0.35f;
+
     private Rigidbody2D rb;
     private AudioSource audioSource;
+    private SpriteRenderer spriteRenderer;
+    private Color normalColor;
+    private float invulnerabilityVisualRemaining;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            normalColor = spriteRenderer.color;
+        }
+    }
+
+    private void OnEnable()
+    {
+        GameController.PlayerDamaged += OnPlayerDamaged;
+    }
+
+    private void OnDisable()
+    {
+        GameController.PlayerDamaged -= OnPlayerDamaged;
+        RestoreOpacity();
+    }
+
+    private void Update()
+    {
+        if (invulnerabilityVisualRemaining <= 0f)
+        {
+            return;
+        }
+
+        invulnerabilityVisualRemaining = Mathf.Max(0f, invulnerabilityVisualRemaining - Time.deltaTime);
+        float progress = 1f - invulnerabilityVisualRemaining / GameController.PlayerInvulnerabilityDuration;
+        SetOpacity(Mathf.Lerp(damagedAlpha, normalColor.a, progress));
+
+        if (invulnerabilityVisualRemaining <= 0f)
+        {
+            RestoreOpacity();
+        }
     }
 
     void FixedUpdate()
@@ -64,5 +103,29 @@ public class PlayerMovement : MonoBehaviour
             // Destroy(other.gameObject);
             audioSource.Play();
         }
+    }
+
+    private void OnPlayerDamaged(float duration)
+    {
+        invulnerabilityVisualRemaining = duration;
+        SetOpacity(damagedAlpha);
+    }
+
+    private void SetOpacity(float alpha)
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
+
+        Color color = normalColor;
+        color.a = alpha;
+        spriteRenderer.color = color;
+    }
+
+    private void RestoreOpacity()
+    {
+        invulnerabilityVisualRemaining = 0f;
+        SetOpacity(normalColor.a);
     }
 }
