@@ -11,7 +11,7 @@
     - [x] Fazer com que os inimigos sigam o jogador ou tenham um comportamento variável (patrulha, perseguição).
 4. Visual: (75 Pontos)
     - [x] Trocar a cor dos sprites básicos
-    - [ ] Usar assets de sprites de forma coerente
+    - [x] Usar assets de sprites de forma coerente
 5. Audio: (100 Pontos)
     - [ ] Adicionar música ao seu jogo
     - [ ] Adicionar diferentes elementos sonoros
@@ -21,9 +21,9 @@
 7. Controles: (50 Pontos)
     - [ ] Adicionar suporte a joystick/controle
 8. Level Design: (150 Pontos)
-    - [ ] Ajustar o jogo a algum tema
-    - [ ] Criar uma nova arena ou modificar a arena básica
-    - [ ] Adicionar novos desafios para o jogador
+    - [x] Ajustar o jogo a algum tema
+    - [x] Criar uma nova arena ou modificar a arena básica
+    - [x] Adicionar novos desafios para o jogador
 
 ## Sprite credits
 

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 5.0f;
     private Rigidbody2D rb;
     private AudioSource audioSource;
 
@@ -63,10 +63,6 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
             // Destroy(other.gameObject);
             audioSource.Play();
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            Debug.Log("Player collided with Enemy!");
         }
     }
 }
