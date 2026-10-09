@@ -1,13 +1,22 @@
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject endGamePanel;
+    [SerializeField] private TMP_Text gameOverTitle;
 
     private void OnEnable()
     {
         GameController.GameOver += ShowEndGamePanel;
-        SetEndGamePanel(GameController.IsGameOver());
+        if (GameController.IsInitialized && GameController.IsGameOver())
+        {
+            ShowEndGamePanel(GameController.GetGameOverReason());
+        }
+        else
+        {
+            SetEndGamePanel(false);
+        }
     }
 
     private void OnDisable()
@@ -15,10 +24,15 @@ public class UIManager : MonoBehaviour
         GameController.GameOver -= ShowEndGamePanel;
     }
 
-    private void ShowEndGamePanel()
+    private void ShowEndGamePanel(string reason)
     {
+        if (gameOverTitle != null)
+        {
+            gameOverTitle.text = $"Game over\nReason: {reason}";
+        }
+
         SetEndGamePanel(true);
-        Debug.Log("Game Over!");
+        Debug.Log($"Game Over: {reason}");
     }
 
     private void SetEndGamePanel(bool visible)

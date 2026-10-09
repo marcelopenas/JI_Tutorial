@@ -15,7 +15,7 @@ public static class GameController
     public static event Action<int> CoinCountChanged;
     public static event Action<int> PlayerLivesChanged;
     public static event Action<float> PlayerDamaged;
-    public static event Action GameOver;
+    public static event Action<string> GameOver;
 
     public const float PlayerInvulnerabilityDuration = 3f;
     public static bool IsInitialized => initialized;
@@ -61,6 +61,26 @@ public static class GameController
     public static bool IsGameOver()
     {
         return coinCount >= 3 || timer <= 0 || playerLives <= 0;
+    }
+
+    public static string GetGameOverReason()
+    {
+        if (coinCount >= 3)
+        {
+            return "Got all coins";
+        }
+
+        if (timer <= 0)
+        {
+            return "Time ran out";
+        }
+
+        if (playerLives <= 0)
+        {
+            return "Lost all lives";
+        }
+
+        return string.Empty;
     }
 
     public static void DecreaseTimer()
@@ -125,7 +145,7 @@ public static class GameController
         if (IsGameOver() && !gameOverRaised)
         {
             gameOverRaised = true;
-            GameOver?.Invoke();
+            GameOver?.Invoke(GetGameOverReason());
         }
     }
 
