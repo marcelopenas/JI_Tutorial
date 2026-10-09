@@ -24,3 +24,8 @@
     - [ ] Ajustar o jogo a algum tema
     - [ ] Criar uma nova arena ou modificar a arena básica
     - [ ] Adicionar novos desafios para o jogador
+
+## Sprite credits
+
+- <https://www.gameart2d.com/freebies.html>
+- <https://www.flaticon.com/free-icons/santa>
