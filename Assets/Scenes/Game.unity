@@ -723,8 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game over
-Reason: '
+  m_text: 'Game over Reason: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1626,7 +1625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &846872985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1944,8 +1943,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1016312970553176362, guid: 7db7b3502ebccda7db8c5bad24f594a6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2344,6 +2343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 10
+  damagedAlpha: 0.35
+  damageSound: {fileID: 0}
 --- !u!4 &1272713941
 Transform:
   m_ObjectHideFlags: 0
@@ -2599,7 +2600,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f9f7e61f40b4b19b3a6d0ef8a8a5c01, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   backgroundLoop: {fileID: 8300000, guid: 554afccb466f7739a810b3b78d187265, type: 3}
   victory: {fileID: 8300000, guid: 4dd1b6ae8c2a0d58bbe280d3243f7f0a, type: 3}
@@ -2720,8 +2721,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1016312970553176362, guid: 7db7b3502ebccda7db8c5bad24f594a6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2968,10 +2969,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9182405848097080281, guid: cb427c6e87b95ef19810b66557d5bc07, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7779757089626925114, guid: cb427c6e87b95ef19810b66557d5bc07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.06
@@ -3015,6 +3012,10 @@ PrefabInstance:
     - target: {fileID: 9182405848097080281, guid: cb427c6e87b95ef19810b66557d5bc07, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182405848097080281, guid: cb427c6e87b95ef19810b66557d5bc07, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
