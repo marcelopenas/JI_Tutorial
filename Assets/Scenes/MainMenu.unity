@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 259527080}
   - component: {fileID: 259527079}
   - component: {fileID: 259527083}
+  - component: {fileID: 259527084}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -237,6 +238,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3515bccfe28b38d228df14ff31ed6a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuActions
+--- !u!114 &259527084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259527078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9f7e61f40b4b19b3a6d0ef8a8a5c01, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  backgroundLoop: {fileID: 8300000, guid: 554afccb466f7739a810b3b78d187265, type: 3}
+  victory: {fileID: 0}
+  death: {fileID: 0}
+  playMenuMusic: 1
 --- !u!1 &519168163
 GameObject:
   m_ObjectHideFlags: 0

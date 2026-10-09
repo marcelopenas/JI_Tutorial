@@ -2444,6 +2444,7 @@ GameObject:
   - component: {fileID: 1473574214}
   - component: {fileID: 1473574216}
   - component: {fileID: 1473574217}
+  - component: {fileID: 1473574218}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2588,6 +2589,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f22c889d1e84cce9b0b2a6c6b507f5d, type: 3}
   m_Name: GameLoop
   m_EditorClassIdentifier: Assembly-CSharp::GameLoop
+--- !u!114 &1473574218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473574209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9f7e61f40b4b19b3a6d0ef8a8a5c01, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  backgroundLoop: {fileID: 8300000, guid: 554afccb466f7739a810b3b78d187265, type: 3}
+  victory: {fileID: 8300000, guid: 4dd1b6ae8c2a0d58bbe280d3243f7f0a, type: 3}
+  death: {fileID: 8300000, guid: df0af9d8a16e3c81ca7c4d32ef918987, type: 3}
+  playMenuMusic: 0
 --- !u!1 &1798014784
 GameObject:
   m_ObjectHideFlags: 0

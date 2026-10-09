@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 10
   damagedAlpha: 0.35
+  damageSound: {fileID: 8300000, guid: 856c0780a72048f01894cea8b46e3023, type: 3}
 --- !u!82 &8882730954437457566
 AudioSource:
   m_ObjectHideFlags: 0

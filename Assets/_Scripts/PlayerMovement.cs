@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     [Range(0f, 1f)]
     public float damagedAlpha = 0.35f;
+    [SerializeField] private AudioClip damageSound;
 
     private Rigidbody2D rb;
     private AudioSource audioSource;
@@ -109,6 +110,10 @@ public class PlayerMovement : MonoBehaviour
     {
         invulnerabilityVisualRemaining = duration;
         SetOpacity(damagedAlpha);
+        if (audioSource != null && damageSound != null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
     }
 
     private void SetOpacity(float alpha)

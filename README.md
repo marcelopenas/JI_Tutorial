@@ -13,8 +13,8 @@
     - [x] Trocar a cor dos sprites básicos
     - [x] Usar assets de sprites de forma coerente
 5. Audio: (100 Pontos)
-    - [ ] Adicionar música ao seu jogo
-    - [ ] Adicionar diferentes elementos sonoros
+    - [x] Adicionar música ao seu jogo
+    - [x] Adicionar diferentes elementos sonoros
 6. UI: (100 Pontos)
     - [x] Exibir o score do jogador e o tempo atual na interface durante o jogo.
     - [x] Mostrar outras informações importantes para o jogador (Vida, Stamina, etc)
