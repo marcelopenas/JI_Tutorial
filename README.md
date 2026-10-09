@@ -19,7 +19,7 @@
     - [x] Exibir o score do jogador e o tempo atual na interface durante o jogo.
     - [x] Mostrar outras informações importantes para o jogador (Vida, Stamina, etc)
 7. Controles: (50 Pontos)
-    - [ ] Adicionar suporte a joystick/controle
+    - [x] Adicionar suporte a joystick/controle
 8. Level Design: (150 Pontos)
     - [x] Ajustar o jogo a algum tema
     - [x] Criar uma nova arena ou modificar a arena básica
