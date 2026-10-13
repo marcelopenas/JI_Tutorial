@@ -30,12 +30,12 @@ public class HUDManager : MonoBehaviour
 
     private void UpdateTimerText(int value)
     {
-        timerText.text = "Time: " + value.ToString("D3");
+        timerText.text = "Time: " + value.ToString("D2");
     }
 
     private void UpdateCoinText(int value)
     {
-        coinCountText.text = "Coins: " + value.ToString("D3");
+        coinCountText.text = "Coins: " + value.ToString("D2");
     }
 
     private void UpdateHealthText(int value)
