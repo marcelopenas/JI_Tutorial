@@ -345,6 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuSantaRunner
   speed: 180
   waitTime: 3
+  runningSprite: {fileID: 8661987131898746941, guid: b4bf6da8db786b569b7b3cc022046e3d, type: 3}
+  spriteSwitchInterval: 0.25
 --- !u!1 &519168163
 GameObject:
   m_ObjectHideFlags: 0
