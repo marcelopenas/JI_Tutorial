@@ -13,9 +13,20 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
     private float invulnerabilityVisualRemaining;
+    
+    // Running animation sprite
+    public Sprite runningSprite;
+    private Sprite idleSprite;
+
+    // Timer fields for sprite animation toggle
+    public float SpriteSwitchInterval = 0.25f; // Time in seconds to switch between running and idle sprites
+    private float spriteSwitchTimer;
+    private bool useRunningSprite = true;
 
     void Awake()
     {
+        idleSprite = GetComponent<SpriteRenderer>().sprite;
+
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -106,8 +117,25 @@ public class PlayerMovement : MonoBehaviour
 
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
-        // Flip the sprite based on movement direction (default is facing right)
-        // Also keep last facing direction when not moving
+        // Flip the sprite based on movement direction
+        // Switch between running and idle every second if moving, and reset to idle when stopped
+        if (movement.sqrMagnitude > 0f)
+        {
+            spriteSwitchTimer += Time.fixedDeltaTime;
+            if (spriteSwitchTimer >= SpriteSwitchInterval)
+            {
+                spriteSwitchTimer = 0f;
+                useRunningSprite = !useRunningSprite;
+            }
+            spriteRenderer.sprite = useRunningSprite ? runningSprite : idleSprite;
+        }
+        else
+        {
+            spriteSwitchTimer = 0f;
+            useRunningSprite = true;
+            spriteRenderer.sprite = idleSprite;
+        }
+
         if (movement.x > 0)
         {
             spriteRenderer.flipX = false;
