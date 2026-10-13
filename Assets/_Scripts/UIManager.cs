@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameOverTitle != null)
         {
-            gameOverTitle.text = $"Game over\nReason: {reason}";
+            gameOverTitle.text = $"Game over {reason}";
         }
 
         SetEndGamePanel(true);
