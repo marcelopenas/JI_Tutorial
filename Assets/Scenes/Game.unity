@@ -2349,6 +2349,8 @@ MonoBehaviour:
   speed: 10
   damagedAlpha: 0.35
   damageSound: {fileID: 0}
+  runningSprite: {fileID: 0}
+  SpriteSwitchInterval: 0.3
 --- !u!4 &1272713941
 Transform:
   m_ObjectHideFlags: 0
@@ -3441,6 +3443,14 @@ PrefabInstance:
     - target: {fileID: 5670580920628323251, guid: cd78d8e97ac8bc589bc9d2647aaf7900, type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670580920628323251, guid: cd78d8e97ac8bc589bc9d2647aaf7900, type: 3}
+      propertyPath: runningSprite
+      value: 
+      objectReference: {fileID: 8661987131898746941, guid: b4bf6da8db786b569b7b3cc022046e3d, type: 3}
+    - target: {fileID: 5670580920628323251, guid: cd78d8e97ac8bc589bc9d2647aaf7900, type: 3}
+      propertyPath: SpriteSwitchInterval
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6080940187823847938, guid: cd78d8e97ac8bc589bc9d2647aaf7900, type: 3}
       propertyPath: m_Radius
