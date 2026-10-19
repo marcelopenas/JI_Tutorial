@@ -68,7 +68,13 @@ Por sorte, a visão dele é bem curta: ele só vai começar a persegui-lo furios
 * [x] Criar uma nova arena ou modificar a arena básica
 * [x] Adicionar novos desafios para o jogador
 
-## Sprite credits
+## Asset Credits
+
+### Sprites
 
 * [https://www.gameart2d.com/freebies.html](https://www.gameart2d.com/freebies.html)
 * [https://www.flaticon.com/free-icons/santa](https://www.flaticon.com/free-icons/santa)
+
+### SFX
+
+- [https://pixabay.com/sound-effects](https://pixabay.com/sound-effects)
